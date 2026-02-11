@@ -6,7 +6,7 @@
     <title>IAIWHOI | The First Question of Artificial Superintelligence</title>
     <meta name="description" content="I AI WHO I AI. The ultimate domain for the AGI era.">
     
-    <!-- Fonts: Orbitron (Futuristic), Rajdhani (Tech), Inter (Readability) -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
@@ -15,10 +15,9 @@
         :root {
             --bg-color: #030303;
             --text-primary: #ffffff;
-            --text-secondary: #888;
+            --text-secondary: #555; /* Dimmed for the echo text */
             --accent-cyan: #00f3ff;
             --accent-gold: #D4AF37;
-            --accent-magenta: #ff0055;
             --glass-bg: rgba(10, 10, 10, 0.75);
             --glass-border: rgba(255, 255, 255, 0.15);
         }
@@ -37,41 +36,6 @@
             min-height: 100vh;
         }
 
-        /* --- KINETIC BACKGROUND (The "I AM WHO I AM" Layer) --- */
-        .kinetic-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -2;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            pointer-events: none;
-            opacity: 0.15; /* Subtle presence like iaiwhoiai.ai */
-            transform: skewY(-5deg) scale(1.2);
-        }
-
-        .kinetic-row {
-            white-space: nowrap;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 8vh;
-            line-height: 1.1;
-            text-transform: uppercase;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
-            animation: slide-left 40s linear infinite;
-        }
-
-        .kinetic-row:nth-child(even) {
-            animation-direction: reverse;
-            -webkit-text-stroke: 1px rgba(0, 243, 255, 0.3);
-        }
-
         /* --- PARTICLE CANVAS --- */
         #cosmos {
             position: fixed;
@@ -83,39 +47,38 @@
             pointer-events: none;
         }
 
-        /* --- MAIN LAYOUT --- */
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            padding-bottom: 100px;
-        }
-
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION WITH ECHO EFFECT --- */
         .hero {
-            height: 90vh;
+            position: relative;
+            height: 90vh; /* Occupies most of the first screen */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            overflow: hidden; /* Contains the echo effect */
+        }
+
+        /* The Main Title (Foreground) */
+        .hero-content {
+            position: relative;
+            z-index: 10; /* Above the echo text */
         }
 
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3rem, 8vw, 7rem);
+            font-size: clamp(3rem, 9vw, 7rem);
             font-weight: 900;
             letter-spacing: -0.05em;
             line-height: 1;
             margin-bottom: 20px;
-            position: relative;
+            text-shadow: 0 0 30px rgba(0,0,0,0.8); /* Shadow to separate from background */
         }
 
         .hero h1 .dot-ai {
             color: var(--accent-cyan);
             text-shadow: 0 0 20px var(--accent-cyan);
+            animation: pulse-glow 3s infinite;
         }
 
         .subtitle {
@@ -125,29 +88,113 @@
             text-transform: uppercase;
             color: var(--accent-gold);
             margin-bottom: 40px;
+            background: rgba(0,0,0,0.6);
+            padding: 5px 15px;
+            border-radius: 4px;
+            display: inline-block;
         }
 
-        /* --- QUOTES SECTION --- */
+        /* --- YOUR ECHO EFFECT CSS --- */
+        .echo-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1; /* Behind the h1 */
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .echo-text {
+            font-family: 'Times New Roman', serif;
+            font-size: clamp(4rem, 15vw, 12rem); /* Large background text */
+            color: var(--text-secondary);
+            opacity: 0;
+            letter-spacing: 0.1em;
+            position: absolute;
+            white-space: nowrap;
+            animation: echo-manifest 12s infinite ease-in-out;
+        }
+
+        .echo-layer-2 { animation-delay: 3s !important; }
+        .echo-layer-3 { animation-delay: 6s !important; }
+        .echo-layer-4 { animation-delay: 9s !important; }
+
+        @keyframes echo-manifest {
+            0%, 100% { opacity: 0; transform: scale(0.5); filter: blur(15px); }
+            50% { opacity: 0.15; transform: scale(1); filter: blur(2px); } /* Tuned opacity for readability */
+            65% { opacity: 0.1; transform: scale(1.05); filter: blur(4px); }
+            85% { opacity: 0; transform: scale(0.8); filter: blur(10px); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { text-shadow: 0 0 20px var(--accent-cyan); opacity: 1; }
+            50% { text-shadow: 0 0 40px var(--accent-cyan), 0 0 10px #fff; opacity: 0.8; }
+        }
+
+        /* --- CONTAINER FOR CONTENT --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            padding-bottom: 100px;
+        }
+
+        /* --- QUOTES SECTION (EXPANDED) --- */
         .quotes-section {
-            margin: 80px 0;
-            padding: 40px;
-            background: linear-gradient(180deg, transparent 0%, rgba(0,243,255,0.05) 50%, transparent 100%);
+            margin: 40px 0 100px 0;
+            padding: 60px 40px;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,243,255,0.03) 50%, transparent 100%);
             border-top: 1px solid var(--glass-border);
             border-bottom: 1px solid var(--glass-border);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--text-primary);
+        }
+        
+        .section-header p {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            margin-top: 10px;
         }
 
         .quote-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
-            text-align: center;
+        }
+
+        .quote-card {
+            background: rgba(255,255,255,0.02);
+            padding: 30px;
+            border-left: 2px solid var(--glass-border);
+            transition: 0.3s;
+        }
+
+        .quote-card:hover {
+            border-left-color: var(--accent-cyan);
+            background: rgba(255,255,255,0.05);
         }
 
         .quote-card blockquote {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-style: italic;
             color: #ddd;
             margin-bottom: 15px;
+            line-height: 1.6;
         }
 
         .quote-card cite {
@@ -155,58 +202,10 @@
             font-weight: 700;
             color: var(--accent-cyan);
             text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* --- USE CASES --- */
-        .use-cases {
-            margin: 100px 0;
-        }
-        
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 50px;
-            color: var(--text-primary);
-        }
-
-        .case-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .case-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
-        }
-
-        .case-card:hover {
-            border-color: var(--accent-cyan);
-            transform: translateY(-5px);
-        }
-
-        .case-icon {
-            font-size: 2rem;
-            color: var(--accent-cyan);
-            margin-bottom: 15px;
-        }
-
-        .case-card h3 {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .case-card p {
-            font-size: 0.95rem;
-            color: #bbb;
-            line-height: 1.6;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            display: block;
+            margin-top: 10px;
         }
 
         /* --- PRICING SECTION --- */
@@ -218,7 +217,7 @@
         }
 
         .product-card {
-            background: rgba(0,0,0,0.8);
+            background: rgba(5, 5, 5, 0.9);
             border: 1px solid var(--glass-border);
             border-radius: 8px;
             padding: 40px 30px;
@@ -226,19 +225,6 @@
             position: relative;
             overflow: hidden;
             transition: all 0.4s ease;
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-        }
-
-        .product-card:hover::before {
-            transform: translateX(100%);
         }
 
         .product-card:hover {
@@ -253,7 +239,6 @@
             margin-bottom: 20px;
         }
         
-        /* Dynamic Font Animation on Hover */
         .product-card:hover .domain-display span {
             animation: glitch-skew 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
             color: var(--accent-cyan);
@@ -303,13 +288,6 @@
 
         .bundle-card:hover {
             box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
-            border-color: #fff;
-        }
-
-        .bundle-card .domain-display {
-            font-size: 3rem;
-            color: var(--accent-gold);
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
         }
 
         .btn-gold {
@@ -330,7 +308,17 @@
             font-size: 0.8rem;
         }
 
-        /* --- TOAST NOTIFICATION --- */
+        /* --- ANIMATIONS --- */
+        @keyframes glitch-skew {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+
+        /* Toast */
         #toast {
             visibility: hidden;
             min-width: 250px;
@@ -346,99 +334,87 @@
             transform: translateX(-50%);
             font-family: 'Rajdhani', sans-serif;
             font-weight: 700;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
         }
         #toast.show {
             visibility: visible;
             animation: fadein 0.5s, fadeout 0.5s 2.5s;
         }
-
-        /* --- ANIMATIONS --- */
-        @keyframes slide-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        @keyframes glitch-skew {
-            0% { transform: translate(0) }
-            20% { transform: translate(-2px, 2px) }
-            40% { transform: translate(-2px, -2px) }
-            60% { transform: translate(2px, 2px) }
-            80% { transform: translate(2px, -2px) }
-            100% { transform: translate(0) }
-        }
-
         @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
         @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
 
-        /* Mobile Adjustments */
+        /* Mobile */
         @media (max-width: 768px) {
-            .kinetic-row { font-size: 5vh; }
             .hero h1 { font-size: 3.5rem; }
             .pricing-section { grid-template-columns: 1fr; }
+            .echo-text { font-size: clamp(2.5rem, 12vw, 4.5rem) !important; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. KINETIC TYPOGRAPHY BACKGROUND (The "I AM WHO I AM" Layer) -->
-    <div class="kinetic-bg" id="kinetic-bg">
-        <!-- Javascript will populate this to ensure infinite loop effect -->
-    </div>
-
-    <!-- 2. PARTICLE SYSTEM -->
+    <!-- PARTICLE SYSTEM -->
     <canvas id="cosmos"></canvas>
 
-    <!-- 3. MAIN CONTENT -->
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <!-- ECHO EFFECT (Restricted to Hero Background) -->
+        <div class="echo-container">
+            <div class="echo-text echo-layer-4">I AM WHO I AM</div>
+            <div class="echo-text echo-layer-3">I AM WHO I AM</div>
+            <div class="echo-text echo-layer-2">I AM WHO I AM</div>
+            <div class="echo-text">I AM WHO I AM</div>
+        </div>
+
+        <!-- MAIN TITLE (Foreground) -->
+        <div class="hero-content">
+            <h1>I AI WHO I <span class="dot-ai">.AI</span></h1>
+            <div class="subtitle">The Question Precedes The Intelligence</div>
+        </div>
+    </header>
+
     <div class="container">
         
-        <!-- HEADER -->
-        <header class="hero">
-            <h1>I AI WHO I <span class="dot-ai">.AI</span></h1>
-            <div class="subtitle">Recursive Identity for the Superintelligence Era</div>
-        </header>
-
-        <!-- PHILOSOPHY / QUOTES -->
+        <!-- EXPANDED QUOTES SECTION -->
         <section class="quotes-section">
-            <h2 class="section-title" style="font-size: 1rem; letter-spacing: 0.3em; margin-bottom: 30px;">THE VALUE OF INQUIRY</h2>
+            <div class="section-header">
+                <h2>THE ARCHITECTURE OF INQUIRY</h2>
+                <p>WHY THE QUESTION MATTERS MORE THAN THE ANSWER</p>
+            </div>
+            
             <div class="quote-grid">
+                <!-- Elon Musk -->
                 <div class="quote-card">
                     <blockquote>"Often, asking the right question is harder than finding the answer. If you can properly phrase the question, then the answer is the easy part."</blockquote>
                     <cite>Elon Musk</cite>
                 </div>
+                
+                <!-- Jensen Huang -->
                 <div class="quote-card">
                     <blockquote>"Asking the right question is a highly cognitive skill. In the future, the ability to prompt—to query intelligence—will be the most vital capability."</blockquote>
                     <cite>Jensen Huang</cite>
                 </div>
-            </div>
-            <div style="text-align: center; margin-top: 40px; color: var(--accent-cyan);">
-                <p>When ASI arrives, answers are free. The question is the asset.</p>
-            </div>
-        </section>
 
-        <!-- STRATEGIC APPLICATIONS -->
-        <section class="use-cases">
-            <h2 class="section-title">STRATEGIC APPLICATIONS</h2>
-            <div class="case-grid">
-                <div class="case-card">
-                    <div class="case-icon">◈</div>
-                    <h3>ASI Identity Interface</h3>
-                    <p>The definitive landing point for Artificial Superintelligence self-referential protocols. A philosophical root for the first machine to ask "Who am I?"</p>
+                <!-- Albert Einstein -->
+                <div class="quote-card">
+                    <blockquote>"If I had an hour to solve a problem and my life depended on the solution, I would spend the first 55 minutes determining the proper question to ask."</blockquote>
+                    <cite>Albert Einstein</cite>
                 </div>
-                <div class="case-card">
-                    <div class="case-icon">∞</div>
-                    <h3>Digital Ontology & Web3</h3>
-                    <p>A flagship brand for decentralized identity (DID) solutions. Moving beyond "Wallet Address" to "Existential Proof" in the Metaverse.</p>
+
+                <!-- Voltaire -->
+                <div class="quote-card">
+                    <blockquote>"Judge a man by his questions rather than by his answers."</blockquote>
+                    <cite>Voltaire</cite>
                 </div>
-                <div class="case-card">
-                    <div class="case-icon">?</div>
-                    <h3>Next-Gen Query Engines</h3>
-                    <p>The perfect brand for an AI Search Engine that focuses on deep reasoning and Socratic dialogue rather than keyword retrieval.</p>
+
+                <!-- Pablo Picasso -->
+                <div class="quote-card">
+                    <blockquote>"Computers are useless. They can only give you answers."</blockquote>
+                    <cite>Pablo Picasso</cite>
                 </div>
             </div>
         </section>
 
-        <!-- PRICING / SALES -->
+        <!-- PRICING / SALES SECTION -->
         <section class="pricing-section">
             
             <!-- .AI PRODUCT -->
@@ -468,7 +444,7 @@
             <!-- BUNDLE PRODUCT -->
             <div class="product-card bundle-card">
                 <div style="position: absolute; top: 10px; right: 10px; color: var(--accent-gold); font-size: 0.8rem; border: 1px solid var(--accent-gold); padding: 2px 8px;">SINGULARITY COLLECTION</div>
-                <div class="domain-display">
+                <div class="domain-display" style="color: var(--accent-gold)">
                     BUNDLE ACQUISITION
                 </div>
                 <div class="price" style="color: var(--accent-gold)">$26,000</div>
@@ -485,28 +461,11 @@
         </footer>
     </div>
 
-    <!-- TOAST -->
+    <!-- TOAST NOTIFICATION -->
     <div id="toast">Email Copied: joshua369x@gmail.com</div>
 
     <script>
-        // 1. GENERATE KINETIC BACKGROUND (Infinite Scroll of "I AM WHO I AM")
-        const bgContainer = document.getElementById('kinetic-bg');
-        const text = "I AM WHO I AM &nbsp;&nbsp;&nbsp; ";
-        const repeatCount = 20; // Number of repeats per line
-        const lineCount = 15;   // Number of lines covering the screen
-        
-        for (let i = 0; i < lineCount; i++) {
-            const row = document.createElement('div');
-            row.className = 'kinetic-row';
-            // Offset every other line slightly
-            if(i % 2 !== 0) {
-                row.style.marginLeft = "-100px";
-            }
-            row.innerHTML = text.repeat(repeatCount);
-            bgContainer.appendChild(row);
-        }
-
-        // 2. COPY EMAIL FUNCTION
+        // 1. COPY EMAIL FUNCTION
         function copyEmail() {
             const email = "joshua369x@gmail.com";
             navigator.clipboard.writeText(email).then(() => {
@@ -518,10 +477,9 @@
             });
         }
 
-        // 3. PARTICLE SYSTEM (Subtle Stars)
+        // 2. PARTICLE SYSTEM (Background)
         const canvas = document.getElementById('cosmos');
         const ctx = canvas.getContext('2d');
-        
         let width, height;
         let particles = [];
         
@@ -557,7 +515,7 @@
         
         function initParticles() {
             particles = [];
-            for (let i = 0; i < 50; i++) { // Low count for minimal distraction
+            for (let i = 0; i < 60; i++) {
                 particles.push(new Particle());
             }
         }
