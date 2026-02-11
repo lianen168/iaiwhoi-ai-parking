@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IAIWHOI | The First Question of Artificial Superintelligence</title>
-    <meta name="description" content="I AI WHO I AI. The ultimate domain for the AGI era.">
+    <meta name="description" content="I AI WHO I AI. Premium Domain Portfolio for the AGI Era.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,11 +15,11 @@
         :root {
             --bg-color: #030303;
             --text-primary: #ffffff;
-            --text-secondary: #555; /* Dimmed for the echo text */
+            --text-secondary: #444; 
             --accent-cyan: #00f3ff;
             --accent-gold: #D4AF37;
-            --glass-bg: rgba(10, 10, 10, 0.75);
-            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-bg: rgba(15, 15, 15, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         * {
@@ -47,32 +47,35 @@
             pointer-events: none;
         }
 
-        /* --- HERO SECTION WITH ECHO EFFECT --- */
-        .hero {
+        /* --- MAIN CONTAINER --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
             position: relative;
-            height: 90vh; /* Occupies most of the first screen */
+            z-index: 2;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 40vh; /* Reduced height to allow I AM WHO I AM to appear sooner */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            overflow: hidden; /* Contains the echo effect */
-        }
-
-        /* The Main Title (Foreground) */
-        .hero-content {
-            position: relative;
-            z-index: 10; /* Above the echo text */
+            padding-top: 60px;
+            padding-bottom: 20px;
         }
 
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3rem, 9vw, 7rem);
+            font-size: clamp(3rem, 9vw, 6.5rem);
             font-weight: 900;
             letter-spacing: -0.05em;
-            line-height: 1;
-            margin-bottom: 20px;
-            text-shadow: 0 0 30px rgba(0,0,0,0.8); /* Shadow to separate from background */
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(0,0,0,0.8);
         }
 
         .hero h1 .dot-ai {
@@ -83,18 +86,33 @@
 
         .subtitle {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.4rem);
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--accent-gold);
-            margin-bottom: 40px;
-            background: rgba(0,0,0,0.6);
+            margin-bottom: 10px;
+            background: rgba(0,0,0,0.4);
             padding: 5px 15px;
             border-radius: 4px;
             display: inline-block;
         }
 
-        /* --- YOUR ECHO EFFECT CSS --- */
+        /* --- THE ECHO SECTION (I AM WHO I AM) --- */
+        /* Positioned strictly below the subtitle as requested */
+        .identity-layer {
+            position: relative;
+            width: 100%;
+            height: 40vh; /* Dedicated space for the effect */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 60px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* The user's specific CSS for Echo */
         .echo-container {
             position: absolute;
             top: 0;
@@ -104,20 +122,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1; /* Behind the h1 */
+            z-index: 1;
             overflow: hidden;
-            pointer-events: none;
         }
 
         .echo-text {
             font-family: 'Times New Roman', serif;
-            font-size: clamp(4rem, 15vw, 12rem); /* Large background text */
+            font-size: clamp(3rem, 13vw, 9rem); /* Responsive sizing */
             color: var(--text-secondary);
             opacity: 0;
             letter-spacing: 0.1em;
             position: absolute;
             white-space: nowrap;
             animation: echo-manifest 12s infinite ease-in-out;
+            pointer-events: none;
         }
 
         .echo-layer-2 { animation-delay: 3s !important; }
@@ -126,9 +144,9 @@
 
         @keyframes echo-manifest {
             0%, 100% { opacity: 0; transform: scale(0.5); filter: blur(15px); }
-            50% { opacity: 0.15; transform: scale(1); filter: blur(2px); } /* Tuned opacity for readability */
-            65% { opacity: 0.1; transform: scale(1.05); filter: blur(4px); }
-            85% { opacity: 0; transform: scale(0.8); filter: blur(10px); }
+            50% { opacity: 0.25; transform: scale(1); filter: blur(2px); }
+            65% { opacity: 0.2; transform: scale(1.05); filter: blur(4px); }
+            85% { opacity: 0.1; transform: scale(0.8); filter: blur(10px); }
         }
 
         @keyframes pulse-glow {
@@ -136,50 +154,77 @@
             50% { text-shadow: 0 0 40px var(--accent-cyan), 0 0 10px #fff; opacity: 0.8; }
         }
 
-        /* --- CONTAINER FOR CONTENT --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            padding-bottom: 100px;
+        /* --- STRATEGIC FIELDS (3 AREAS) --- */
+        .use-cases {
+            margin-bottom: 80px;
         }
 
-        /* --- QUOTES SECTION (EXPANDED) --- */
-        .quotes-section {
-            margin: 40px 0 100px 0;
-            padding: 60px 40px;
-            background: linear-gradient(180deg, transparent 0%, rgba(0,243,255,0.03) 50%, transparent 100%);
-            border-top: 1px solid var(--glass-border);
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-header h2 {
+        .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 40px;
             color: var(--text-primary);
-        }
-        
-        .section-header p {
-            font-family: 'Rajdhani', sans-serif;
-            color: var(--accent-gold);
             letter-spacing: 2px;
-            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .case-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .case-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.05);
+        }
+
+        .case-icon {
+            font-size: 2rem;
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+        }
+
+        .case-card h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .case-card p {
+            font-size: 0.95rem;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* --- QUOTES SECTION --- */
+        .quotes-section {
+            margin-bottom: 100px;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,243,255,0.02) 50%, transparent 100%);
         }
 
         .quote-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
         .quote-card {
             background: rgba(255,255,255,0.02);
-            padding: 30px;
+            padding: 25px;
             border-left: 2px solid var(--glass-border);
             transition: 0.3s;
         }
@@ -190,9 +235,9 @@
         }
 
         .quote-card blockquote {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-style: italic;
-            color: #ddd;
+            color: #ccc;
             margin-bottom: 15px;
             line-height: 1.6;
         }
@@ -203,24 +248,23 @@
             color: var(--accent-cyan);
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             display: block;
-            margin-top: 10px;
         }
 
         /* --- PRICING SECTION --- */
         .pricing-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
         }
 
         .product-card {
-            background: rgba(5, 5, 5, 0.9);
+            background: rgba(10, 10, 10, 0.9);
             border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            padding: 40px 30px;
+            border-radius: 4px;
+            padding: 40px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -228,15 +272,16 @@
         }
 
         .product-card:hover {
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.15);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.15);
             border-color: var(--accent-cyan);
         }
 
         .domain-display {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 2.5rem);
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            word-break: break-all;
         }
         
         .product-card:hover .domain-display span {
@@ -246,15 +291,15 @@
 
         .price {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--text-primary);
             margin-bottom: 5px;
         }
 
         .installments {
-            color: var(--text-secondary);
+            color: #888;
             font-size: 0.9rem;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .btn-buy {
@@ -281,13 +326,12 @@
         /* --- BUNDLE CARD --- */
         .bundle-card {
             grid-column: 1 / -1;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(0,0,0,0.9));
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(0,0,0,0.95));
             border: 1px solid var(--accent-gold);
-            margin-top: 20px;
         }
 
         .bundle-card:hover {
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
         }
 
         .btn-gold {
@@ -302,10 +346,10 @@
 
         /* --- FOOTER --- */
         footer {
-            margin-top: 80px;
             text-align: center;
             opacity: 0.4;
             font-size: 0.8rem;
+            padding-bottom: 40px;
         }
 
         /* --- ANIMATIONS --- */
@@ -335,18 +379,26 @@
             font-family: 'Rajdhani', sans-serif;
             font-weight: 700;
         }
-        #toast.show {
-            visibility: visible;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
         @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
         @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
 
-        /* Mobile */
+        /* --- MOBILE ADAPTATION --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3.5rem; }
-            .pricing-section { grid-template-columns: 1fr; }
-            .echo-text { font-size: clamp(2.5rem, 12vw, 4.5rem) !important; }
+            .hero { padding-top: 40px; }
+            .hero h1 { font-size: 3.2rem; } /* Explicit Mobile Font Size */
+            .subtitle { font-size: 0.8rem; letter-spacing: 1px; }
+            
+            /* Stack columns on mobile */
+            .pricing-section, .quote-grid, .case-grid { grid-template-columns: 1fr; }
+            
+            /* Adjust padding */
+            .product-card { padding: 30px 15px; }
+            .case-card { padding: 20px; }
+            
+            /* Echo text size specific for mobile vertical layout */
+            .echo-text { font-size: 3rem; }
+            .identity-layer { height: 30vh; }
         }
     </style>
 </head>
@@ -355,31 +407,49 @@
     <!-- PARTICLE SYSTEM -->
     <canvas id="cosmos"></canvas>
 
-    <!-- HERO SECTION -->
+    <!-- 1. HERO HEADER -->
     <header class="hero">
-        <!-- ECHO EFFECT (Restricted to Hero Background) -->
+        <h1>I AI WHO I <span class="dot-ai">.AI</span></h1>
+        <div class="subtitle">The Question Precedes The Intelligence</div>
+    </header>
+
+    <!-- 2. IDENTITY LAYER (THE ECHO EFFECT - VISUALLY SEPARATE) -->
+    <div class="identity-layer">
         <div class="echo-container">
             <div class="echo-text echo-layer-4">I AM WHO I AM</div>
             <div class="echo-text echo-layer-3">I AM WHO I AM</div>
             <div class="echo-text echo-layer-2">I AM WHO I AM</div>
             <div class="echo-text">I AM WHO I AM</div>
         </div>
-
-        <!-- MAIN TITLE (Foreground) -->
-        <div class="hero-content">
-            <h1>I AI WHO I <span class="dot-ai">.AI</span></h1>
-            <div class="subtitle">The Question Precedes The Intelligence</div>
-        </div>
-    </header>
+    </div>
 
     <div class="container">
         
-        <!-- EXPANDED QUOTES SECTION -->
-        <section class="quotes-section">
-            <div class="section-header">
-                <h2>THE ARCHITECTURE OF INQUIRY</h2>
-                <p>WHY THE QUESTION MATTERS MORE THAN THE ANSWER</p>
+        <!-- 3. STRATEGIC APPLICATIONS (3 FIELDS) -->
+        <section class="use-cases">
+            <h2 class="section-title">Strategic Applications</h2>
+            <div class="case-grid">
+                <div class="case-card">
+                    <div class="case-icon">◈</div>
+                    <h3>ASI Identity Interface</h3>
+                    <p>The philosophical root for the first machine to ask "Who am I?" A definitive landing point for Superintelligence self-reference.</p>
+                </div>
+                <div class="case-card">
+                    <div class="case-icon">∞</div>
+                    <h3>Digital Ontology & Web3</h3>
+                    <p>A flagship brand for decentralized identity (DID) solutions. Moving beyond "Wallet Address" to "Existential Proof" in the Metaverse.</p>
+                </div>
+                <div class="case-card">
+                    <div class="case-icon">?</div>
+                    <h3>Next-Gen Query Engines</h3>
+                    <p>The perfect brand for an AI Search Engine that focuses on Socratic dialogue, deep reasoning, and cognitive prompting.</p>
+                </div>
             </div>
+        </section>
+
+        <!-- 4. QUOTES SECTION -->
+        <section class="quotes-section">
+            <h2 class="section-title" style="font-size: 1.2rem; margin-bottom: 30px; color: var(--accent-gold);">The Power of Inquiry</h2>
             
             <div class="quote-grid">
                 <!-- Elon Musk -->
@@ -396,7 +466,7 @@
 
                 <!-- Albert Einstein -->
                 <div class="quote-card">
-                    <blockquote>"If I had an hour to solve a problem and my life depended on the solution, I would spend the first 55 minutes determining the proper question to ask."</blockquote>
+                    <blockquote>"If I had an hour to solve a problem... I would spend the first 55 minutes determining the proper question to ask."</blockquote>
                     <cite>Albert Einstein</cite>
                 </div>
 
@@ -414,7 +484,7 @@
             </div>
         </section>
 
-        <!-- PRICING / SALES SECTION -->
+        <!-- 5. PRICING / SALES SECTION -->
         <section class="pricing-section">
             
             <!-- .AI PRODUCT -->
@@ -445,10 +515,10 @@
             <div class="product-card bundle-card">
                 <div style="position: absolute; top: 10px; right: 10px; color: var(--accent-gold); font-size: 0.8rem; border: 1px solid var(--accent-gold); padding: 2px 8px;">SINGULARITY COLLECTION</div>
                 <div class="domain-display" style="color: var(--accent-gold)">
-                    BUNDLE ACQUISITION
+                    BUNDLE
                 </div>
                 <div class="price" style="color: var(--accent-gold)">$26,000</div>
-                <div class="installments">Own the complete question. Control the narrative.</div>
+                <div class="installments">Own the complete question.</div>
                 <button onclick="copyEmail()" class="btn-buy btn-gold">
                     Copy Email to Inquire
                 </button>
@@ -465,7 +535,7 @@
     <div id="toast">Email Copied: joshua369x@gmail.com</div>
 
     <script>
-        // 1. COPY EMAIL FUNCTION
+        // 1. COPY EMAIL
         function copyEmail() {
             const email = "joshua369x@gmail.com";
             navigator.clipboard.writeText(email).then(() => {
@@ -477,7 +547,7 @@
             });
         }
 
-        // 2. PARTICLE SYSTEM (Background)
+        // 2. PARTICLE SYSTEM
         const canvas = document.getElementById('cosmos');
         const ctx = canvas.getContext('2d');
         let width, height;
