@@ -58,7 +58,7 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            min-height: 40vh; /* Reduced height to allow I AM WHO I AM to appear sooner */
+            min-height: 40vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -98,11 +98,10 @@
         }
 
         /* --- THE ECHO SECTION (I AM WHO I AM) --- */
-        /* Positioned strictly below the subtitle as requested */
         .identity-layer {
             position: relative;
             width: 100%;
-            height: 40vh; /* Dedicated space for the effect */
+            height: 40vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -112,7 +111,6 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* The user's specific CSS for Echo */
         .echo-container {
             position: absolute;
             top: 0;
@@ -128,8 +126,9 @@
 
         .echo-text {
             font-family: 'Times New Roman', serif;
-            font-size: clamp(3rem, 13vw, 9rem); /* Responsive sizing */
-            color: var(--text-secondary);
+            font-size: clamp(3rem, 13vw, 9rem);
+            /* UPDATED COLOR: Changed from dark grey to White to be visible on black */
+            color: #ffffff; 
             opacity: 0;
             letter-spacing: 0.1em;
             position: absolute;
@@ -143,9 +142,10 @@
         .echo-layer-4 { animation-delay: 9s !important; }
 
         @keyframes echo-manifest {
+            /* Opacity adjusted: peaks at 0.35 to be visible but ghostly */
             0%, 100% { opacity: 0; transform: scale(0.5); filter: blur(15px); }
-            50% { opacity: 0.25; transform: scale(1); filter: blur(2px); }
-            65% { opacity: 0.2; transform: scale(1.05); filter: blur(4px); }
+            50% { opacity: 0.35; transform: scale(1); filter: blur(2px); }
+            65% { opacity: 0.3; transform: scale(1.05); filter: blur(4px); }
             85% { opacity: 0.1; transform: scale(0.8); filter: blur(10px); }
         }
 
@@ -386,17 +386,14 @@
         /* --- MOBILE ADAPTATION --- */
         @media (max-width: 768px) {
             .hero { padding-top: 40px; }
-            .hero h1 { font-size: 3.2rem; } /* Explicit Mobile Font Size */
+            .hero h1 { font-size: 3.2rem; }
             .subtitle { font-size: 0.8rem; letter-spacing: 1px; }
             
-            /* Stack columns on mobile */
             .pricing-section, .quote-grid, .case-grid { grid-template-columns: 1fr; }
             
-            /* Adjust padding */
             .product-card { padding: 30px 15px; }
             .case-card { padding: 20px; }
             
-            /* Echo text size specific for mobile vertical layout */
             .echo-text { font-size: 3rem; }
             .identity-layer { height: 30vh; }
         }
@@ -413,7 +410,7 @@
         <div class="subtitle">The Question Precedes The Intelligence</div>
     </header>
 
-    <!-- 2. IDENTITY LAYER (THE ECHO EFFECT - VISUALLY SEPARATE) -->
+    <!-- 2. IDENTITY LAYER (THE ECHO EFFECT) -->
     <div class="identity-layer">
         <div class="echo-container">
             <div class="echo-text echo-layer-4">I AM WHO I AM</div>
@@ -425,7 +422,7 @@
 
     <div class="container">
         
-        <!-- 3. STRATEGIC APPLICATIONS (3 FIELDS) -->
+        <!-- 3. STRATEGIC APPLICATIONS -->
         <section class="use-cases">
             <h2 class="section-title">Strategic Applications</h2>
             <div class="case-grid">
