@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAIWHOI | The First Question of the ASI Era</title>
+    <meta name="description" content="I AI WHO I AI. In the age of infinite answers, the only scarce resource is the right question. Premium Domain Portfolio.">
+    
+    <!-- Google Fonts: Orbitron (Futuristic) & Rajdhani (Technical) & Inter (Clean) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-color: #ffffff;
+            --accent-ai: #00f3ff; /* Cyan for AI */
+            --accent-human: #ff0055; /* Red/Pink for Human/Blood */
+            --accent-gold: #ffd700; /* Gold for Value */
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Background Particle Canvas */
+        #cosmos {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
+        }
+
+        /* --- TYPOGRAPHY UTILS --- */
+        .font-tech { font-family: 'Orbitron', sans-serif; }
+        .font-mono { font-family: 'Rajdhani', monospace; }
+        .glow-text { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+        .accent-ai { color: var(--accent-ai); text-shadow: 0 0 8px var(--accent-ai); }
+        .accent-gold { color: var(--accent-gold); }
+
+        /* --- HERO SECTION --- */
+        header {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .main-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .main-title .dot-ai {
+            color: var(--accent-ai);
+            display: inline-block;
+            animation: pulse 3s infinite;
+        }
+
+        /* Infinite Scroll Loop */
+        .infinite-wrapper {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            opacity: 0.3;
+            margin-top: -10px;
+            margin-bottom: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 10px 0;
+        }
+
+        .infinite-scroll {
+            display: inline-block;
+            animation: scroll 40s linear infinite;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
+        }
+
+        /* --- PHILOSOPHY SECTION --- */
+        .philosophy {
+            max-width: 900px;
+            margin: 0 auto 6rem auto;
+            padding: 2rem;
+            text-align: center;
+            border-left: 1px solid var(--accent-ai);
+            background: linear-gradient(90deg, rgba(0,243,255,0.05) 0%, transparent 100%);
+        }
+
+        .quote-block {
+            margin-bottom: 2rem;
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            color: #e0e0e0;
+        }
+
+        .quote-author {
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            color: var(--accent-ai);
+        }
+
+        .core-insight {
+            margin-top: 3rem;
+            font-size: 1.5rem;
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        /* --- SALES SECTION --- */
+        .sales-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .domain-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 4px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .domain-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1);
+            border-color: var(--accent-ai);
+        }
+
+        .domain-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            word-break: break-all;
+        }
+
+        /* Dynamic Font Effect */
+        .dynamic-char {
+            display: inline-block;
+            transition: color 0.3s;
+        }
+        .domain-card:hover .dynamic-char {
+            animation: glitch-anim 2s infinite;
+        }
+
+        .price-tag {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-info {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--text-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        /* --- BUNDLE SECTION --- */
+        .bundle-section {
+            max-width: 800px;
+            margin: 0 auto 6rem auto;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(255,215,0,0.05) 0%, rgba(0,0,0,0) 100%);
+            border: 1px solid var(--accent-gold);
+            text-align: center;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .bundle-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-gold);
+            color: #000;
+            padding: 5px 15px;
+            font-weight: bold;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .bundle-price {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            font-family: 'Orbitron', sans-serif;
+            margin: 1rem 0;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-gold {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .btn-gold:hover {
+            background: var(--accent-gold);
+            color: #000;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Toast Notification */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--accent-ai);
+            color: #000;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 100;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; text-shadow: 0 0 5px var(--accent-ai); }
+            50% { opacity: 1; text-shadow: 0 0 20px var(--accent-ai), 0 0 40px var(--accent-ai); }
+            100% { opacity: 0.5; text-shadow: 0 0 5px var(--accent-ai); }
+        }
+
+        @keyframes glitch-anim {
+            0% { opacity: 1; transform: translate(0); }
+            2% { opacity: 1; transform: translate(2px, -2px); }
+            4% { opacity: 1; transform: translate(-2px, 2px); }
+            6% { opacity: 1; transform: translate(0); }
+            100% { opacity: 1; transform: translate(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="cosmos"></canvas>
+
+    <header>
+        <h1 class="main-title font-tech">I AI WHO I <span class="dot-ai">.AI</span></h1>
+        
+        <div class="infinite-wrapper">
+            <div class="infinite-scroll">
+                I AM WHO I AM &nbsp;&nbsp; I AM WHO I AM &nbsp;&nbsp; I AM WHO I AM &nbsp;&nbsp; I AM WHO I AM &nbsp;&nbsp; I AM WHO I AM &nbsp;&nbsp; I AM WHO I AM &nbsp;&nbsp; I AM WHO I AM &nbsp;&nbsp; I AM WHO I AM &nbsp;&nbsp; I AM WHO I AM &nbsp;&nbsp; 
+            </div>
+        </div>
+    </header>
+
+    <section class="philosophy">
+        <div class="quote-block">
+            <p class="quote-text">"Often, asking the right question is harder than finding the answer. If you can properly phrase the question, then the answer is the easy part."</p>
+            <p class="quote-author">— Elon Musk</p>
+        </div>
+        <div class="quote-block">
+            <p class="quote-text">"Asking the right question is a highly cognitive skill. In the future, the ability to prompt—to query intelligence—will be the most vital capability."</p>
+            <p class="quote-author">— Jensen Huang</p>
+        </div>
+        <div class="core-insight">
+            <p>In the era of Artificial Superintelligence (ASI), answers become infinite and free.<br>
+            <span class="accent-ai">The Question</span> becomes the only currency of value.</p>
+        </div>
+    </section>
+
+    <div class="sales-container">
+        <!-- .AI Card -->
+        <div class="domain-card">
+            <div class="domain-name font-tech">
+                <span class="dynamic-char">IAIWHOI</span><span class="accent-ai dynamic-char">.AI</span>
+            </div>
+            <div class="price-tag">$13,700</div>
+            <div class="payment-info">Available in 4 interest-free payments</div>
+            <a href="https://www.spaceship.com/s/buy/iaiwhoi.ai/mEuRPFLuRB6qUxm9" target="_blank" class="btn">
+                Acquire .AI Identity
+            </a>
+        </div>
+
+        <!-- .COM Card -->
+        <div class="domain-card">
+            <div class="domain-name font-tech">
+                <span class="dynamic-char">IAIWHOI</span><span class="dynamic-char" style="color: #aaa;">.COM</span>
+            </div>
+            <div class="price-tag">$13,700</div>
+            <div class="payment-info">Available in 4 interest-free payments</div>
+            <a href="https://www.spaceship.com/s/buy/iaiwhoi.com/wwjmMMWauM5trXPf" target="_blank" class="btn">
+                Acquire .COM Legacy
+            </a>
+        </div>
+    </div>
+
+    <!-- Bundle Section -->
+    <section class="bundle-section">
+        <div class="bundle-badge">The Singularity Collection</div>
+        <h2>ACQUIRE THE COMPLETE QUESTION</h2>
+        <div class="bundle-price">$26,000</div>
+        <p style="margin-bottom: 2rem; color: #ccc;">Secure both assets (AI + COM) and own the narrative of the future.</p>
+        <button onclick="copyEmail()" class="btn btn-gold">
+            Request Bundle Purchase
+        </button>
+    </section>
+
+    <footer>
+        <p>I AI WHO I AI &copy; 2026. All Rights Reserved.</p>
+        <p style="font-family: monospace; margin-top: 10px;">[ SYSTEM: WAITING FOR INPUT... ]</p>
+    </footer>
+
+    <div id="toast">Email Copied: joshua369x@gmail.com</div>
+
+    <script>
+        // --- COPY TO CLIPBOARD ---
+        function copyEmail() {
+            const email = "joshua369x@gmail.com";
+            navigator.clipboard.writeText(email).then(() => {
+                const toast = document.getElementById("toast");
+                toast.className = "show";
+                setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        // --- PARTICLE SYSTEM ---
+        const canvas = document.getElementById('cosmos');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        let particles = [];
+        
+        // Configuration
+        const particleCount = 60;
+        const connectionDistance = 150;
+        
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 0.5;
+                this.alpha = Math.random() * 0.5 + 0.1;
+            }
+            
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                if (this.x < 0) this.x = width;
+                if (this.x > width) this.x = 0;
+                if (this.y < 0) this.y = height;
+                if (this.y > height) this.y = 0;
+            }
+            
+            draw() {
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+        
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw connections
+            particles.forEach((p, index) => {
+                p.update();
+                p.draw();
+                
+                // Connect particles close to each other
+                for (let j = index + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    
+                    if (dist < connectionDistance) {
+                        ctx.strokeStyle = `rgba(0, 243, 255, ${0.15 - dist/connectionDistance * 0.15})`; // Cyan hue
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+                
+                // Connect particles to mouse (Optional Interaction)
+                // If you want mouse interaction, we can add it here.
+            });
+            
+            requestAnimationFrame(animate);
+        }
+        
+        window.addEventListener('resize', () => {
+            resize();
+            initParticles();
+        });
+        
+        resize();
+        initParticles();
+        animate();
+    </script>
+</body>
+</html>
